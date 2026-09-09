@@ -1,0 +1,54 @@
+{
+  "firestore": {
+    "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "public": "frontend/dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      {
+        "source": "/healthz",
+        "destination": "/v1/healthz",
+        "type": 302
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/v1/**",
+        "run": {
+          "serviceId": "studio-tower-api",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/healthz/**",
+        "run": {
+          "serviceId": "studio-tower-api",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/readyz",
+        "run": {
+          "serviceId": "studio-tower-api",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          { "key": "X-Content-Type-Options", "value": "nosniff" },
+          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+          { "key": "X-Frame-Options", "value": "DENY" },
+          { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        ]
+      }
+    ]
+  }
+}

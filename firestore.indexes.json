@@ -1,0 +1,94 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "messages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "space_id", "order": "ASCENDING" },
+        { "fieldPath": "created_at", "order": "DESCENDING" },
+        { "fieldPath": "message_id", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "messages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "space_id", "order": "ASCENDING" },
+        { "fieldPath": "project_tag", "order": "ASCENDING" },
+        { "fieldPath": "created_at", "order": "DESCENDING" },
+        { "fieldPath": "message_id", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "activity_events",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "space_id", "order": "ASCENDING" },
+        { "fieldPath": "created_at", "order": "DESCENDING" },
+        { "fieldPath": "event_id", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "activity_events",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "space_id", "order": "ASCENDING" },
+        { "fieldPath": "project_tags", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "created_at", "order": "DESCENDING" },
+        { "fieldPath": "event_id", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "activity_events",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "space_id", "order": "ASCENDING" },
+        { "fieldPath": "project_tag", "order": "ASCENDING" },
+        { "fieldPath": "created_at", "order": "DESCENDING" },
+        { "fieldPath": "event_id", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "space_metric_rollups",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "space_id", "order": "ASCENDING" },
+        { "fieldPath": "hour_str", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "space_metric_rollups",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "space_id", "order": "ASCENDING" },
+        { "fieldPath": "project_tag", "order": "ASCENDING" },
+        { "fieldPath": "hour_str", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "spaces",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "is_sandbox", "order": "ASCENDING" },
+        { "fieldPath": "sandbox_expires_at", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "spaces",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "is_sandbox", "order": "ASCENDING" },
+        { "fieldPath": "cleanup_status", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "sandbox_cleanup_jobs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "current_phase", "order": "ASCENDING" },
+        { "fieldPath": "next_retry_at", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

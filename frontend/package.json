@@ -1,0 +1,31 @@
+{
+  "name": "studiotower-ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode development --force",
+    "build": "node -e \"console.error('❌ FATAL: Bare build command disallowed. Specify npm run build:prod or npm run build:staging.'); process.exit(1);\"",
+    "build:staging": "node scripts/validate-staging-config.js && vite build --mode staging && node scripts/audit-staging-bundle.js",
+    "build:prod": "node scripts/validate-config.js && vite build --mode production && node scripts/audit-bundle.js --strict",
+    "audit:bundle": "node scripts/audit-bundle.js",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:a11y": "vitest run tests/a11y.test.tsx",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@preact/signals": "^2.11.0",
+    "firebase": "^12.18.0",
+    "preact": "^10.29.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@preact/preset-vite": "^2.10.6",
+    "@testing-library/preact": "^3.2.4",
+    "jsdom": "^29.1.1",
+    "typescript": "^7.0.2",
+    "vite": "^5.4.0",
+    "vitest": "^4.1.10"
+  }
+}
