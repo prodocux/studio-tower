@@ -52,6 +52,7 @@ EXCLUDE_GLOBS = (
     "**/*.timestamp-*.mjs",
     "**/*.egg-info/**",
     "**/*.zip",
+    "docs/adr/**",
 )
 
 
@@ -59,8 +60,11 @@ def _excluded(rel: str) -> bool:
     name = Path(rel).name
     if name in EXCLUDE_NAME or name == ".env" or (name.startswith(".env.") and name != ".env.example"):
         return True
+    norm = rel.replace("\\", "/")
+    if norm.startswith("docs/adr/"):
+        return True
     for pat in EXCLUDE_GLOBS:
-        if fnmatch.fnmatch(rel.replace("\\", "/"), pat):
+        if fnmatch.fnmatch(norm, pat):
             return True
     return False
 

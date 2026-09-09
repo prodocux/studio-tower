@@ -62,5 +62,6 @@ def test_private_docs_are_not_in_public_export():
     assert "JUDGES_GUIDE.md" not in names
     assert "AGENT_SYNC.md" not in names
     assert "phase0_baseline.md" not in names
+    assert not any(rel.replace("\\", "/").startswith("docs/adr/") for rel in iter_public_export_paths(ROOT))
     assert "README.md" in names
     assert "PRIOR_ART.md" in names

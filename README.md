@@ -234,8 +234,7 @@ studiotower/
 ├── docs/                          # Comprehensive Documentation
 │   ├── INSTALLATION.md           # Step-by-step installation & operator guide
 │   ├── DEPLOYMENT.md             # Production Cloud Run & Firebase deployment
-│   ├── api_contracts.md          # REST API contracts & error schemas
-│   └── adr/                      # Architecture Decision Records (ADR-0001 ~ ADR-0005)
+│   └── api_contracts.md          # REST API contracts & error schemas
 ├── scripts/                       # Automation scripts
 │   ├── deploy.ps1                # Cloud Run deployment script (PowerShell)
 │   ├── deploy.sh                 # Cloud Run deployment script (Bash)
@@ -259,12 +258,6 @@ studiotower/
 - [**Installation & Operator Guide**](docs/INSTALLATION.md): Complete setup walkthrough for Windows, Linux, and macOS.
 - [**Production Deployment Guide**](docs/DEPLOYMENT.md): Cloud Run containerization, Firestore indexes, and Firebase Hosting.
 - [**API Contracts Specification**](docs/api_contracts.md): Full REST endpoint schemas, headers, and error models.
-- [**Architecture Decision Records**](docs/adr/):
-  - [ADR-0001: Clean-Room Architecture](docs/adr/ADR-0001-clean-room-architecture.md)
-  - [ADR-0002: Space Isolation & Tagging](docs/adr/ADR-0002-space-isolation-and-tagging.md)
-  - [ADR-0003: Artifact Lineage & Observability Panel](docs/adr/ADR-0003-artifact-lineage-and-observability-panel.md)
-  - [ADR-0004: PDX & ProDocuX Integration](docs/adr/ADR-0004-pdx-and-prodocux-integration.md)
-  - [ADR-0005: Gemini google-genai & Grafana MCP](docs/adr/ADR-0005-gemini-adk-and-grafana-mcp.md)
 
 ---
 
@@ -275,7 +268,7 @@ studiotower/
 - **Fail-Closed Auth**: Dev headers are strictly rejected in staging and production environments.
 - **Deterministic Deliverables**: User-selected formats are generated through ProDocuX Kernel with content hashing and SHA-256 lineage logs.
 - **Grafana write vs read**: Dashboard reads use `GRAFANA_SERVICE_ACCOUNT_TOKEN` (`glsa_`). OTLP ingest uses `GRAFANA_OTLP_TOKEN` (`glc_`) from Secret Manager. Tokens are never returned in API payloads. The inspector kicker does not display `GRAFANA_BASE_URL`; “Open in Grafana” links must be HTTPS on `*.grafana.net`.
-- **Public export**: `PROJECT_STORY.md`, `JUDGES_GUIDE.md`, `AI_DEVELOPMENT_LOG.md`, `FRONTEND_PRODUCT_IMPROVEMENT_PLAN.md`, and `docs/phase0_baseline.md` stay in the incubator tree and are **not** copied to the public clone. `scripts/export_public_sync.py` fail-closes if the export set contains live `glsa_` / `glc_eyJ` / Google API keys or private-key PEM.
+- **Public export**: `PROJECT_STORY.md`, `JUDGES_GUIDE.md`, `AI_DEVELOPMENT_LOG.md`, `FRONTEND_PRODUCT_IMPROVEMENT_PLAN.md`, `docs/phase0_baseline.md`, and `docs/adr/` stay in the incubator tree and are **not** copied to the public clone. `scripts/export_public_sync.py` fail-closes if the export set contains live `glsa_` / `glc_eyJ` / Google API keys or private-key PEM.
 
 ---
 
